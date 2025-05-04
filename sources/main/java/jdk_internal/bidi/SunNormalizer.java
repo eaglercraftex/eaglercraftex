@@ -56,6 +56,7 @@ public final class SunNormalizer {
 	 *               {@link java.text.Normalizer.Form#NFKC},
 	 *               {@link java.text.Normalizer.Form#NFKD}
 	 * @param option The normalization option;
+	 *               {@link sun.text.Normalizer#UNICODE_3_2}
 	 * @return The normalized String
 	 * @throws NullPointerException If <code>src</code> or <code>form</code> is
 	 *                              null.
@@ -74,6 +75,7 @@ public final class SunNormalizer {
 	 *               {@link java.text.Normalizer.Form#NFKC},
 	 *               {@link java.text.Normalizer.Form#NFKD}
 	 * @param option The normalization option;
+	 *               {@link sun.text.Normalizer#UNICODE_3_2}
 	 * @return true if the sequence of char values is normalized; false otherwise.
 	 * @throws NullPointerException If <code>src</code> or <code>form</code> is
 	 *                              null.
