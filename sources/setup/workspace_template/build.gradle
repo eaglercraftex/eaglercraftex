@@ -16,17 +16,28 @@ sourceSets {
     main {
         java {
             srcDirs(
-                "src/main/java",
-                "src/game/java",
-               	"src/protocol-game/java",
-                "src/protocol-relay/java",
-                "src/teavm/java",
-                "src/teavm-boot-menu/java"
+                    "src/main/java",
+                    "src/game/java",
+                    "src/protocol-game/java",
+                    "src/protocol-relay/java",
+                    "src/teavm/java",
+                    "src/teavm-boot-menu/java"
             )
         }
     }
-    
+    desktop {
+        java {
+            srcDirs(
+                    "src/main/java",
+                    "src/game/java",
+                    "src/protocol-game/java",
+                    "src/protocol-relay/java",
+                    "src/lwjgl/java")
+
+        }
+    }
 }
+
 
 repositories {
     mavenCentral()
@@ -36,6 +47,8 @@ dependencies {
     teavm(teavm.libs.jso)
     teavm(teavm.libs.jsoApis)
     compileOnly "org.teavm:teavm-core:0.9.2" // workaround for a few hacks
+
+    desktopImplementation fileTree("desktopRuntime/eclipseProject/deps_fix")
 }
 
 def folder = "javascript"
@@ -46,7 +59,7 @@ teavm.js {
     obfuscated = true
     sourceMap = true
     targetFileName = "../" + name
-    optimization = OptimizationLevel.BALANCED // Change to "AGGRESSIVE" for release
+    optimization = OptimizationLevel.BALANCED // Change to "AGGRESSIVE" for release; Default - "BALANCED"
     outOfProcess = false
     fastGlobalAnalysis = false
     processMemory = 512
@@ -59,9 +72,9 @@ teavm.js {
 
 tasks.named("generateJavaScript") {
     doLast {
-    
+
         // NOTE: This step may break at any time, and is not required for 99% of browsers
-        
+
         def phile = file(folder + "/" + name)
         def dest = phile.getText("UTF-8")
         def i = dest.substring(0, dest.indexOf("=\$rt_globals.Symbol('jsoClass');")).lastIndexOf("let ")
@@ -70,4 +83,19 @@ tasks.named("generateJavaScript") {
         dest = dest.substring(0, j + 34) + "\n" + file(folder + "/ES6ShimScript.txt").getText("UTF-8") + "\n" + dest.substring(j + 34)
         phile.write(dest, "UTF-8")
     }
+}
+
+
+tasks.register("desktopRuntime", JavaExec) {
+    classpath = sourceSets.desktop.compileClasspath
+    group = "eaglercraftex"
+    description = "Run the desktop runtime."
+    classpath sourceSets.desktop.runtimeClasspath
+    if (System.getProperty("os.name").toLowerCase().contains("mac")) {
+        jvmArgs '-XstartOnFirstThread'
+    }
+
+    args = ["hide-renderdoc", "opengl"]
+    workingDir "./desktopRuntime"
+    main 'net.lax1dude.eaglercraft.v1_8.internal.lwjgl.MainClass'
 }
