@@ -1,0 +1,3 @@
+[submodule "EaglercraftXServer"]
+	path = gateway/EaglercraftXServer
+	url = https://github.com/lax1dude/eaglerxserver.git

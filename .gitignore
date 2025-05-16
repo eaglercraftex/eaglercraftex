@@ -9,3 +9,4 @@ MinecraftSrc.zip
 /rundir/*
 /##TEAVM.TMP##/*
 /builds/*
+.idea/*
