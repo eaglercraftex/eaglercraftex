@@ -1,4 +1,4 @@
-# eaglercraft-workspace
+# eaglercraftex-workspace
 
 ### Java 17 or greater is required!
 
