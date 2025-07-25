@@ -85,6 +85,20 @@ POSSIBILITY OF SUCH DAMAGE.
 						imgElements[i].src = faviconSrc;
 					}
 				}
+				// Helper to validate URLs before assigning to iframe.src
+				function isSafeURL(url) {
+					try {
+						var parsed = new URL(url, window.location.origin);
+						// Allow only http, https, and about protocols
+						if (parsed.protocol === "http:" || parsed.protocol === "https:" || parsed.protocol === "about:") {
+							return true;
+						}
+						return false;
+					} catch (e) {
+						return false;
+					}
+				}
+
 				function setupElementListeners() {
 					elements.button_allow.addEventListener("click", function() {
 						if(websocketInstance !== null) {
@@ -297,7 +311,12 @@ POSSIBILITY OF SUCH DAMAGE.
 					if(webviewOptions.contentMode === "BLOB_BASED") {
 						currentIFrame.srcdoc = webviewOptions.blob;
 					}else {
-						currentIFrame.src = webviewOptions.url;
+						if (isSafeURL(webviewOptions.url)) {
+							currentIFrame.src = webviewOptions.url;
+						} else {
+							setErrored("Blocked potentially unsafe URL: " + webviewOptions.url);
+							return;
+						}
 					}
 					currentIFrame.focus();
 					if(webviewOptions.scriptEnabled && webviewOptions.serverMessageAPIEnabled) {
