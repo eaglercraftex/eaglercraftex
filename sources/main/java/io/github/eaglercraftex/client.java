@@ -14,7 +14,7 @@ public class client {
 	public static Logger logger;
 	
 	public void start() {
-		logger = LogManager.getLogger("Lume");
+		logger = LogManager.getLogger("eaglercraftex");
 		
 		logger.info("Loading " + NAME + " " + VERSION);
 	}
