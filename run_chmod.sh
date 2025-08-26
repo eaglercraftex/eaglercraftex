@@ -9,3 +9,4 @@ chmod +x build_make_unpatched.sh
 chmod +x build_merge_pullrequest.sh
 chmod +x build_merge_direct.sh
 chmod +x build_clean_tmp.sh
+chmod +x mcp918/download_files.sh
