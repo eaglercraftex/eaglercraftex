@@ -1,5 +1,5 @@
 @echo off
-title CompileLatestClient
+title Download files
 
 where curl >nul 2>nul
 if errorlevel 1 (
