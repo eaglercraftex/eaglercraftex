@@ -4,7 +4,7 @@ import net.lax1dude.eaglercraft.v1_8.EaglercraftVersion;
 import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
 import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
 
-public class Client {
+public class client {
 	private static Client INSTANCE = new Client();
 	
 	public String NAME = EaglercraftVersion.projectForkName;
