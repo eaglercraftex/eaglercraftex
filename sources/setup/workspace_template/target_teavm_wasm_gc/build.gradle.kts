@@ -36,7 +36,7 @@ repositories {
 dependencies {
 	teavm(teavm.libs.jso)
 	teavm(teavm.libs.jsoApis)
-	compileOnly("org.teavm:teavm-core:0.12.1-EAGLER-R3") // workaround for a few hacks
+	compileOnly("org.teavm:teavm-core:0.12.3") // workaround for a few hacks
 	implementation(rootProject)
 	implementation(libs.jorbis)
 	implementation(libs.bundles.common)
