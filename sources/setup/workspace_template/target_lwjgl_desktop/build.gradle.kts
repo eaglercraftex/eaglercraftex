@@ -28,7 +28,7 @@ dependencies {
 	implementation("org.lwjgl:lwjgl-openal")
 	implementation("org.lwjgl:lwjgl-opengles")
 	implementation("org.java-websocket:Java-WebSocket:1.6.0")
-	implementation("dev.onvoid.webrtc:webrtc-java:0.10.0")
+	implementation("dev.onvoid.webrtc:webrtc-java:0.14.0")
 	implementation(
 		files(
 			"../desktopRuntime/codecjorbis-20101023.jar",
