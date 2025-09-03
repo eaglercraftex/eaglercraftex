@@ -10,7 +10,7 @@ buildscript {
 
 plugins {
 	id("java")
-	id("org.teavm") version "0.9.2"
+	id("org.teavm") version "0.12.3"
 
 	id("com.resentclient.oss.eaglercraft.build") version "0.0.0"
 }

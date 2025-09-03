@@ -5,7 +5,7 @@ import org.teavm.gradle.api.WasmDebugInfoLevel
 
 plugins {
 	id("java")
-	id("org.teavm") version "0.12.1-EAGLER-R3"
+	id("org.teavm") version "0.12.3"
 
 	id("com.resentclient.oss.eaglercraft.build") version "0.0.0"
 }
